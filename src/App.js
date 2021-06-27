@@ -181,8 +181,18 @@ export default function TaskList() {
     return stPrint;
   }
 
+  let fileReader = new FileReader();
+  const onFileInputChange = (e) => {
+    console.log(e.target.files);
+    fileReader.readAsText(e.target.files);
+  };
+  fileReader.onload = () =>{
+    console.log(fileReader.result);
+  }
+
   return (
     <div>
+      <input type='file' onChange={onFileInputChange}/>
       <div className={classes.box}>
         <div className={classes.box2}>
           <TableContainer className={classes.container}>
